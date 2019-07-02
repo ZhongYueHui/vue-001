@@ -59,7 +59,7 @@ module.exports = {
         open: true, //是否打开浏览器
         contentBase: 'src', //指定托管的目录
         hot: true, //是否启用热更新
-        port: 8000 //代理的端口
+        port: 3000 //代理的端口
     },
     mode: 'development',
     plugins: [
