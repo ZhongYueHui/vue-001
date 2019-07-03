@@ -12,7 +12,6 @@
 
 <script>
 import axios from 'axios'
-import { type } from 'os';
 import commens from '../../comment.vue'
 export default {
     data(){

@@ -18,13 +18,20 @@ Vue.filter('datafilter', function(dateFrom, patten = " YYYY-MM-DD HH:mm:ss") {
 //导入router
 import router from './route'
 
-// 引入mint -ui  
-import { Header, Swipe, SwipeItem, Button } from 'mint-ui'
+// 按需引入mint -ui  
+// import { Header, Swipe, SwipeItem, Button ,Lazyload } from 'mint-ui'
 
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
-Vue.component(Header.name, Header)
-Vue.component(Button.name, Button)
+// Vue.component(Swipe.name, Swipe);
+// Vue.component(SwipeItem.name, SwipeItem);
+// Vue.component(Header.name, Header)
+// Vue.component(Button.name, Button)
+// //懒加载
+// Vue.use(Lazyload);
+
+//完整导入mint-ui (否则懒加载loading无法显示)
+import MintUi from 'mint-ui'
+import 'mint-ui/lib/style.css'
+Vue.use(MintUi)
 
 //引入 vue-resource
 import VueResource from 'vue-resource'
@@ -33,7 +40,6 @@ Vue.use(VueResource)
 //引入axios
 import axios from 'axios'
 Vue.use(axios)
-
 
 
 // 引入 MuI

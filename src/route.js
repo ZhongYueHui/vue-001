@@ -8,6 +8,7 @@ import Searchcontainer from './components/TabBar/Searchcontainer.vue'
 import Shopcarcontainer from './components/TabBar/Shopcarcontainer.vue'
 import NewList from './components/News/NewsList.vue'
 import NewInfo from './components/News/Newinfo/newinfo.vue'
+import Photosimage from './Photos/Shareimage.vue'
 
 // http://v.juhe.cn/toutiao/index?type=top&key=3dc86b09a2ee2477a5baa80ee70fcdf5
 
@@ -33,8 +34,11 @@ const router = new VueRouter({
         }, {
             path: '/home/newlist/newinfo/:title',
             component: NewInfo
+        }, {
+            path: '/home/photosimage',
+            component: Photosimage
         }],
-        linkActiveClass: 'mui-active'
+        linkActiveClass: 'mui-active' //选中Tabbar高亮
     })
     // 向外暴露这个 router对象
 export default router
