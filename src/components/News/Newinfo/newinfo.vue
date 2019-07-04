@@ -29,7 +29,7 @@ export default {
             axios.post("http://api.wangshuwen.com/getNews")
             .then(res => {
                 if(res.status === 200){
-            for(var i=0;i<=10;i++){
+            for(var i=0;i<=res.data.data.length;i++){
                if(res.data.data[i].title == this.title){
                    this.newInfoList = res.data.data[i]
                }}

@@ -3,7 +3,7 @@
         <div id="slider" class="mui-slider ">
 				<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
 					<div class="mui-scroll">
-						<a :class="['mui-control-item', item.id==0?'mui-active':'']" v-for="item in allCategories" :key="item.id">
+						<a :class="['mui-control-item', item.id==0?'mui-active':'']" v-for="item in allCategories" :key="item.id" @click="getmore(item.id)">
 							{{ item.name }}
 						</a>
 					
@@ -12,7 +12,7 @@
         </div>
 
         <ul class="photsList">
-        <li v-for="item in imageList" :key="item.id">
+        <router-link v-for="item in imageList" :key="item.id" :to="'/home/photosInfo/'+item.id" tag="li">
          <img v-lazy="item.url" class="img">
          <div class="info"> 
             <span class="infoXx">
@@ -20,7 +20,7 @@
                  <p>{{ item.create_time }}</p>
             </span>
          </div>
-  </li>
+  </router-link>
 </ul>
     </div>
 </template>
@@ -46,7 +46,7 @@ export default {
     },
     methods:{
         getAllCategories(){
-            axios.get("http://cdn.apc.360.cn/index.php?c=WallPaper&a=getAllCategoriesV2&from=360chrome")
+            axios.get("http://cdn.apc.360.cn/index.php?c=WallPaper&a=getAllCategoriesV2&from=360chrome")  //获取图片的分类
             .then(res => {
                 if(res.status ===200 ){
                 console.log(res.data.data)
@@ -59,7 +59,7 @@ export default {
             })
         },
         getImageslist(catId){
-            axios.get("http://wallpaper.apc.360.cn/index.php?c=WallPaper&a=getAppsByCategory&cid="+catId+"&start=1&count=100&fr8om=360chrome")
+            axios.get("http://wallpaper.apc.360.cn/index.php?c=WallPaper&a=getAppsByCategory&cid="+catId+"&start=1&count=10&fr8om=360chrome")
             .then(res => {
                 console.log(res.data.data)
                 if(res.status === 200){
@@ -69,8 +69,21 @@ export default {
             .catch(err => {
                 console.error(err); 
             })
-        }
-    }
+        },
+        getmore(id){
+        axios.get("http://wallpaper.apc.360.cn/index.php?c=WallPaper&a=getAppsByCategory&cid="+id+"&start=1&count=10&fr8om=360chrome")
+        .then(res => {
+            console.log(res)
+            if(res.status === 200){
+                    this.imageList = res.data.data
+                }
+        })
+        .catch(err => {
+            console.error(err); 
+        })
+    },
+    },
+  
 }
 </script>   
 

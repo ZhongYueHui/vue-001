@@ -9,6 +9,9 @@ import Shopcarcontainer from './components/TabBar/Shopcarcontainer.vue'
 import NewList from './components/News/NewsList.vue'
 import NewInfo from './components/News/Newinfo/newinfo.vue'
 import Photosimage from './Photos/Shareimage.vue'
+import photsInfo from './Photos/photosInfo.vue'
+import goodslist from './Goods/goodsList.vue'
+import goodslistinfo from './Goods/goodsListInfo.vue'
 
 // http://v.juhe.cn/toutiao/index?type=top&key=3dc86b09a2ee2477a5baa80ee70fcdf5
 
@@ -37,6 +40,16 @@ const router = new VueRouter({
         }, {
             path: '/home/photosimage',
             component: Photosimage
+        }, {
+            path: '/home/photosInfo/:id',
+            component: photsInfo
+        }, {
+            path: '/home/goodslist',
+            component: goodslist
+        }, {
+            path: "/home/goodslistinfo/:id",
+            component: goodslistinfo,
+            name: "goodslistinfo"
         }],
         linkActiveClass: 'mui-active' //选中Tabbar高亮
     })

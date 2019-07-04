@@ -1,19 +1,17 @@
 <template>
     <div>
-        <p>Homecontainer</p>
-        <mt-swipe :auto="2000">
-            <mt-swipe-item v-for="item in swpieList" :key="item.url" >
-                <img :src="item.url">
-            </mt-swipe-item>
-        </mt-swipe>
+        <!-- 轮播图 -->
+        <swpie :swpieList="swpieList" :isfull="true"></swpie>
+
+        <!-- 九宫格菜单栏 -->
           <ul class="mui-table-view mui-grid-view mui-grid-9">
-        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="/home/newlist">
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="/home/newlist">
 		                    <img src="../../images/1.jpg" alt="">
 		                    <div class="mui-media-body">新闻资讯</div></router-link></li>
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="/home/photosimage">
 		                   <img src="../../images/2.jpg" alt="">
 		                    <div class="mui-media-body">图片分享</div></router-link></li>
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="#">
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="/home/goodslist">
 		                   <img src="../../images/3.jpg" alt="">
 		                    <div class="mui-media-body">商品购买</div></router-link></li>
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="#">
@@ -33,6 +31,8 @@
 <script>
 import axios from 'axios'
 import { Toast } from 'mint-ui'
+//引入轮播图组件
+import swpie from '../../carousel/carousel.vue'
 export default {
     data(){
         return{
@@ -46,32 +46,25 @@ export default {
         getSwipe(){
             axios.get("https://api.asilu.com/bg/")
             .then(res => {
+                // console.log(res.data.images)
                 // this.swpieList = res.data.imges
                 if(res.status === 200){
                     this.swpieList = res.data.images
                     }
+                    console.log(this.swpieList)
             })
             .catch(err => {
                 Toast(err)
             })
         }
     },
+    components:{
+        swpie   //挂载轮播图组件
+    }
 }
 </script>
 
 <style lang="scss" scoped>
-.mint-swipe{
-    height: 200px;
-    .mint-swipe-item{
-        &:nth-child(1){
-            background-color: red;
-        img{
-            width: 100%;
-            height: 100%;
-        }
-        }
-    }
-}
 .mui-grid-9{
     background-color: white!important;
     img{

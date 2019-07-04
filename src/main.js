@@ -33,9 +33,6 @@ import MintUi from 'mint-ui'
 import 'mint-ui/lib/style.css'
 Vue.use(MintUi)
 
-//引入 vue-resource
-import VueResource from 'vue-resource'
-Vue.use(VueResource)
 
 //引入axios
 import axios from 'axios'
@@ -46,6 +43,11 @@ Vue.use(axios)
 import mui from './lib/Mui/css/mui.css'
 //引入扩展图标类
 import './lib/Mui/css/icons-extra.css'
+
+//缩略图
+import VuePreview from 'vue-preview'
+// defalut install
+Vue.use(VuePreview)
 
 
 const vm = new Vue({
