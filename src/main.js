@@ -36,7 +36,8 @@ Vue.use(MintUi)
 
 //引入axios
 import axios from 'axios'
-Vue.use(axios)
+//再原型上添加一个axios属性，这样使用的时候可以直接通过 this.axios.get()使用
+Vue.prototype.axios = axios
 
 
 // 引入 MuI

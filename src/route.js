@@ -12,6 +12,8 @@ import Photosimage from './Photos/Shareimage.vue'
 import photsInfo from './Photos/photosInfo.vue'
 import goodslist from './Goods/goodsList.vue'
 import goodslistinfo from './Goods/goodsListInfo.vue'
+import goodsdesc from './Goods/goodsDesc.vue'
+import goodscomment from './Goods/goodsComment.vue';
 
 // http://v.juhe.cn/toutiao/index?type=top&key=3dc86b09a2ee2477a5baa80ee70fcdf5
 
@@ -50,6 +52,14 @@ const router = new VueRouter({
             path: "/home/goodslistinfo/:id",
             component: goodslistinfo,
             name: "goodslistinfo"
+        }, {
+            path: "/home/goodsdesc/:id",
+            component: goodsdesc,
+            name: "goodsdesc"
+        }, {
+            path: "/home/goodsomment/:id",
+            component: goodscomment,
+            name: "goodscomment"
         }],
         linkActiveClass: 'mui-active' //选中Tabbar高亮
     })
