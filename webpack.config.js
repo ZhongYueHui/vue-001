@@ -74,6 +74,12 @@ module.exports = {
 
             'vue$': 'vue/dist/vue.esm.js'
         }
+    },
+    target: 'web',
+    node: {
+        fs: 'empty',
+        child_process: 'empty',
+
     }
 
 }

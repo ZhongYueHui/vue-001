@@ -22,7 +22,7 @@
 				<div class="mui-card-content">
 					<div class="mui-card-content-inner">
                         <p class="price">
-                            市场价:<del>￥{{ infomessage.price }}</del>&nbsp;&nbsp;销售价:<span class="now_price">￥{{ infomessage.oldprice }}</span>
+                            市场价:<del>￥{{ infomessage.oldprice }}</del>&nbsp;&nbsp;销售价:<span class="now_price">￥{{ infomessage.price }}</span>
                         </p>
                         <p class="number">
                             <span class="shop_num">购买数量：</span><numberbox @getcount="getSelectCount" :max="infomessage.residue"></numberbox>
@@ -93,6 +93,7 @@ export default {
         },
         goodsInfoMess(){ //获取数据的详细信息
             axios.get("http://localhost:8080/goodsList.php",{
+            
                 params:{
                     "id":this.id
                 }
@@ -113,7 +114,18 @@ export default {
             this.$router.push({ name:"goodscomment" ,params:{ id }})
         },
         addToShopCar(){
+            //添加到购物车
             this.flage=!this.flage
+            //{ id: "商品的id",count：要购买的数量.price：商品的单价,selected:false }
+            //拼接出一个商品信息对象，将来保存到store中的car数组中去
+            const goodsinfo = {
+                id:this.id,
+                count:this.count,
+                price:this.infomessage.price,
+                selected: true
+            }
+            //将这个goodsinfo对象保存到store中的 addToCar 中
+            this.$store.commit("addToCar",goodsinfo)
         },
          beforeEnter(el) { //before 表示动画入场之前，动画尚未开始，可以在 beforeEnter 设置开始动画之前的起始样式
                     //设置小球开始动画之前的起始位置
