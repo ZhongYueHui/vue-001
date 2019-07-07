@@ -30,6 +30,7 @@
 
 <script>
 import axios from 'axios'
+import $ from 'jquery'
 import { Toast } from 'mint-ui'
 //引入轮播图组件
 import swpie from '../../carousel/carousel.vue'
@@ -44,18 +45,26 @@ export default {
     },
     methods:{
         getSwipe(){
-            axios.get("https://api.asilu.com/bg/")
-            .then(res => {
-                // console.log(res.data.images)
-                // this.swpieList = res.data.imges
-                if(res.status === 200){
-                    this.swpieList = res.data.images
-                    }
-                    console.log(this.swpieList)
-            })
-            .catch(err => {
-                Toast(err)
-            })
+            // axios.get("https://api.asilu.com/bg/")
+            // .then(res => {
+            //     // console.log(res.data.images)
+            //     // this.swpieList = res.data.imges
+            //     if(res.status === 200){
+            //         // this.swpieList = res.data.images
+            //         console.log(this.swpieList);
+            //         }
+            // })
+            // .catch(err => {
+            //     Toast(err)
+            // })
+            $.ajax({
+                type: "GET",
+                url: "https://api.asilu.com/bg/",
+                dataType: "jsonp",
+                success: res=>{
+                    this.swpieList = res.images
+                }
+            });
         }
     },
     components:{

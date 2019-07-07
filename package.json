@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "fs": "^0.0.1-security",
+    "jquery": "^3.4.1",
     "mint-ui": "^2.2.13",
     "moment": "^2.24.0",
     "prettier": "^1.12.1",
